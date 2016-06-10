@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="MyShoppingTasky.Views.ListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyShoppingTasky.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <CollectionViewSource  x:Key="ItemsGrouped"
+                               Source="{Binding GroupedShoppings, Source={Binding}}"
+ IsSourceGrouped="True"
+ ItemsPath="Items"
+ />
+    </Page.Resources>
+    <Grid>
+        <ListView x:ConnectionId='1' Name="NewThing"                                 IsItemClickEnabled="True"  ItemsSource="{Binding Source={StaticResource ItemsGrouped}}" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="20">
+                        <TextBlock Text="{Binding ToBuyName}" FontWeight="Bold"
+                                   Style="{StaticResource BaseTextBlockStyle}"/>
+                        <TextBlock Text="{Binding ToBuyPriority}" FontWeight="Bold"
+                                   Style="{StaticResource BaseTextBlockStyle}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.GroupStyle>
+                <GroupStyle HidesIfEmpty="True">
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Background="LightGray" Margin="0" >
+                                <TextBlock Text='{Binding Key}'
+                           Foreground="Black" Margin="30"
+                           Style="{StaticResource HeaderTextBlockStyle}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListView.GroupStyle>
+        </ListView>
+    </Grid>
+</Page>
+

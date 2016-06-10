@@ -1,0 +1,2 @@
+D:\aib2\MyShoppingTasky\MyShoppingTasky\BackgroundTask\BackgroundTask.csproj;x86
+D:\aib2\MyShoppingTasky\MyShoppingTasky\MyShoppingTasky\MyShoppingTasky.csproj;x86

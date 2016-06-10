@@ -1,0 +1,123 @@
+﻿<ContentDialog x:ConnectionId='1'
+    x:Class="MyShoppingTasky.Views.CdEdit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyShoppingTasky.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Edytujesz produkt"
+    PrimaryButtonText="Zapisz"  
+    SecondaryButtonText="Anuluj"
+                                                         
+                                                             >
+
+    <ContentDialog.Resources>
+        <x:Double x:Key="pivotHeaderFontSize">30</x:Double>
+    </ContentDialog.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="None"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualSizeStateGroup">
+                <VisualState x:Name="Portrait">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.FontSize)" Storyboard.TargetName="tbPivotItem1Header">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>60</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.FontSize)" Storyboard.TargetName="tbPivotItemeHeader">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>60</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.MaxHeight)" Storyboard.TargetName="tBDescription">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>100</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Landscape">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.FontSize)" Storyboard.TargetName="tbPivotItem1Header">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>20</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.FontSize)" Storyboard.TargetName="tbPivotItem2Header">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>20</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.MaxHeight)" Storyboard.TargetName="tBDescription">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>50</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.MaxHeight)" Storyboard.TargetName="tBDescription2">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>50</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Pivot x:Uid="pRegistration" x:Name="pRegistration"  Grid.Row="0">
+            <PivotItem x:Uid="piGeneral" x:Name="piGeneral">
+                <PivotItem.Header>
+                    <TextBlock x:Uid="tbPivotItem1Header" x:Name="tbPivotItem1Header" Text="Dane podstawowe" FontSize="{StaticResource pivotHeaderFontSize}"/>
+                </PivotItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="6*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Margin="0,20,0,0" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="0">
+                        <TextBox x:Name="ToBuyName" Text="{Binding ToBuyName, Mode=TwoWay}" InputScope="AlphanumericHalfWidth"  FontSize="20" FontFamily="Calibri" Width="auto" />
+                        <TextBox x:Name="ToBuyPriority" Text="{Binding ToBuyPriority, Mode=TwoWay}" InputScope="AlphanumericHalfWidth"  FontSize="20" FontFamily="Calibri" Width="auto" />
+                    </StackPanel>
+                </Grid>
+            </PivotItem>
+            <PivotItem x:Uid="piDetail" x:Name="piDetail">
+                <PivotItem.Header>
+                    <TextBlock x:Uid="tbPivotItem2Header" x:Name="tbPivotItem2Header" Text="opcjonalne" FontSize="{Binding Source={StaticResource pivotHeaderFontSize}, Mode=OneWay}"/>
+                </PivotItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Margin="0,20,0,0" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="0">
+                        <TextBox x:Name="tToBuyPrice" Text="{Binding ToBuyPrice, Mode=TwoWay}" InputScope="AlphanumericHalfWidth"  FontSize="20" FontFamily="Calibri" Width="auto" />
+                        <TextBox x:Name="Comments" Text="{Binding Comments, Mode=TwoWay}" Height="200" InputScope="AlphanumericFullWidth" TextWrapping="Wrap"  FontSize="20" FontFamily="Calibri" Width="auto" />
+                    </StackPanel>
+                </Grid>
+            </PivotItem>
+        </Pivot>
+        <StackPanel  Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        </StackPanel>
+    </Grid>
+</ContentDialog>
+

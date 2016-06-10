@@ -1,0 +1,163 @@
+﻿<Page
+    x:Class="MyShoppingTasky.Views.AddShopping"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyShoppingTasky.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <x:Double x:Key="pivotHeaderFontSize">30</x:Double>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="None"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualSizeStateGroup">
+                <VisualState x:Name="Portrait">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.FontSize)" Storyboard.TargetName="tbPivotItem1Header">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>60</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.FontSize)" Storyboard.TargetName="tbPivotItemeHeader">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>60</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.MaxHeight)" Storyboard.TargetName="tBDescription">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>100</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Landscape">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.FontSize)" Storyboard.TargetName="tbPivotItem1Header">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>20</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.FontSize)" Storyboard.TargetName="tbPivotItem2Header">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>20</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.MaxHeight)" Storyboard.TargetName="tBDescription">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>50</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.MaxHeight)" Storyboard.TargetName="tBDescription2">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Double>50</x:Double>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Pivot x:Uid="pRegistration" x:Name="pRegistration" Title="test"  Grid.Row="0">
+            <PivotItem x:Uid="piGeneral" x:Name="piGeneral">
+                <PivotItem.Header>
+                    <TextBlock x:Uid="tbPivotItem1Header" x:Name="tbPivotItem1Header" Text="Dane podstawowe" FontSize="{StaticResource pivotHeaderFontSize}"/>
+                </PivotItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="6*"/>
+                    </Grid.RowDefinitions>
+                    <Viewbox Grid.Row="0" HorizontalAlignment="Left">
+                        <TextBlock x:Name="tbTitle" Grid.Row="0" Margin="0,0,0,10" HorizontalAlignment="Left" TextWrapping="NoWrap" Text="Uzupełnij dane" VerticalAlignment="Center" Style="{StaticResource BaseTextBlockStyle}" Pivot.SlideInAnimationGroup="GroupOne"/>
+                    </Viewbox>
+                    <StackPanel Margin="0,20,0,0" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="2">
+                        <ComboBox x:Name="CbShoppingGroup" Width="auto" PlaceholderText="Wybierz grupę">
+                            <ComboBoxItem Content="Spożywcze różne"></ComboBoxItem>
+                            <ComboBoxItem Content="Chemia"></ComboBoxItem>
+                            <ComboBoxItem Content="Obiad"></ComboBoxItem>
+                            <ComboBoxItem Content="Rożne"></ComboBoxItem>
+                        </ComboBox>
+                        <TextBox x:Name="tBName" PlaceholderText="Nazwa artykułu" InputScope="AlphanumericHalfWidth"  FontSize="20" FontFamily="Calibri" Width="auto" />
+                        <TextBox x:Name="tBPriority" PlaceholderText="Priorytet" InputScope="AlphanumericHalfWidth"  FontSize="20" FontFamily="Calibri" Width="auto" />
+                    </StackPanel>
+                    <!--<Image x:Name="IImage" Grid.Row="1" Source="{Binding ImagePath}" Grid.Column="0" Stretch="Uniform" />
+                    <StackPanel Margin="0,20,0,0" Orientation="Vertical" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top">
+                        <TextBlock x:Name="tBDescription" MaxHeight="100" TextTrimming="WordEllipsis"  FontSize="12" FontFamily="Calibri"  LineHeight="15" TextWrapping="Wrap" TextAlignment="Justify" Text="{Binding Description}" Style="{StaticResource BodyTextBlockStyle}" />
+                        <TextBlock x:Name="tbDate" Margin="0,20,0,0"  FontSize="13" FontWeight="ExtraBold" Foreground="{ThemeResource PhoneAccentBrush}" FontFamily="Calibri"   TextWrapping="Wrap" TextAlignment="Justify" Text="{Binding Date}" />
+                    </StackPanel>-->
+                </Grid>
+            </PivotItem>
+            <PivotItem x:Uid="piDetail" x:Name="piDetail">
+                <PivotItem.Header>
+                    <TextBlock x:Uid="tbPivotItem2Header" x:Name="tbPivotItem2Header" Text="opcjonalne" FontSize="{Binding Source={StaticResource pivotHeaderFontSize}, Mode=OneWay}"/>
+                </PivotItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
+                    </Grid.RowDefinitions>
+                    <Viewbox Grid.Row="0" HorizontalAlignment="Left">
+                        <TextBlock x:Name="tbTitleDetail" Grid.Row="0" Margin="0,0,0,10" HorizontalAlignment="Left" TextWrapping="NoWrap" Text="Uzupełnij dane" VerticalAlignment="Center" Style="{StaticResource BaseTextBlockStyle}" Pivot.SlideInAnimationGroup="GroupTwo"/>
+                    </Viewbox>
+                    <StackPanel Margin="0,20,0,0" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="2">
+                        <TextBox x:Name="tBPrice" PlaceholderText="Cena" InputScope="AlphanumericHalfWidth"  FontSize="20" FontFamily="Calibri" Width="auto" />
+                        <TextBox x:Name="tBComment" PlaceholderText="Uwagi" Height="200" InputScope="AlphanumericFullWidth" TextWrapping="Wrap"  FontSize="20" FontFamily="Calibri" Width="auto" />
+                    </StackPanel>
+                    <!--<StackPanel Margin="0,10,0,0" Orientation="Vertical" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top">
+                        <TextBlock x:Name="tbArea" Margin="0,0,0,0" TextTrimming="WordEllipsis"  FontSize="12" FontFamily="Calibri"  LineHeight="15" TextWrapping="Wrap" TextAlignment="Justify" Style="{StaticResource BodyTextBlockStyle}" >
+                           <Run Text="Powierdznia (w km): "/>
+                           <Run Text="{Binding Area}" />
+                        </TextBlock>
+                        <TextBlock x:Name="tbInhabitants" Margin="0,20,0,0" TextTrimming="WordEllipsis"  FontSize="12" FontFamily="Calibri"  LineHeight="15" TextWrapping="Wrap" TextAlignment="Justify"  Style="{StaticResource BodyTextBlockStyle}">
+                           <Run Text="Liczba mieszkańców: "/>
+                           <Run Text="{Binding Inhabitants}" />
+                        </TextBlock>
+                        <TextBlock x:Name="tbGDP" Margin="0,20,0,0"  FontSize="13" FontWeight="ExtraBold" Foreground="{ThemeResource PhoneAccentBrush}" FontFamily="Calibri"   TextWrapping="Wrap" TextAlignment="Justify" >
+                           <Run Text="PKB na mieszkańca (w USD): "/>
+                           <Run Text="{Binding GDP}" />
+                        </TextBlock>
+                        <TextBlock x:Name="tbAdditional" Margin="0,20,0,0" MaxHeight="100" TextTrimming="WordEllipsis"  FontSize="12" FontFamily="Calibri"  LineHeight="15" TextWrapping="Wrap" TextAlignment="Justify" Style="{StaticResource BodyTextBlockStyle}" >
+                           <Run Text="Informacje dodatkowe: "/>
+                           <Run Text="{Binding Additional}" />
+                        </TextBlock>
+                    </StackPanel>-->
+                </Grid>
+            </PivotItem>
+        </Pivot>
+        <StackPanel  Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Button x:Name="btnSave" Content="Zapisz" HorizontalAlignment="Center" Click="Button_Click" />
+        </StackPanel>
+    </Grid>
+    <!--<Page.BottomAppBar>
+        <CommandBar x:Name="operations" ClosedDisplayMode="Minimal">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Label="Edycja" Icon="Edit" Click="AppBarButton_Click" ></AppBarButton>
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>-->
+</Page>
